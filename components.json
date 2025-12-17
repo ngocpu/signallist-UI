@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/index.css",
+    "baseColor": "gray",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "aliases": {
+    "components": "@signalist/components",
+    "utils": "@signalist/lib/utils",
+    "ui": "@signalist/components/ui",
+    "lib": "@signalist/lib",
+    "hooks": "@signalist/hooks"
+  },
+  "registries": {}
+}
