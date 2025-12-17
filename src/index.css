@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-*{
+* {
   box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: var(--color-ring) var(--color-background);
@@ -135,8 +135,9 @@ body {
 }
 @theme {
   /* extend custome theme for this project */
-  --color-button-on-sufer-start:#FDD458;
-  --color-button-on-sufer-end:#E8BA40;
+  --color-button-on-sufer-start: #fdd458;
+  --color-button-on-sufer-end: #e8ba40;
+  --color-navbar: #141414;
 }
 
 @layer base {

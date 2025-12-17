@@ -4,4 +4,8 @@ export const ROUTER_PATH = {
     WATCHLIST: "/watchlist",
     NEWS: "/news",
     AUTH: "/auth",
+    AUTH_LOGIN: "login",
+    AUTH_REGISTER: "register",
+    STOCK_DETAIL: "/stock/:symbol",
+    OTHER: "*",
 }
