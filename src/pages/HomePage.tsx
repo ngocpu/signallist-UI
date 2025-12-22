@@ -10,13 +10,13 @@ import React from "react";
 
 const HomePage: React.FC = () => {
   return (
-    <div className="container w-full h-full">
-      <div className="flex-col md:flex-row flex gap-6">
+    <div className="w-full h-full">
+      <div className="flex-col md:flex-row flex gap-6 w-full">
         <section className="w-full md:w-1/3">
           <TradingViewWidget
             widgetName={WIDGET_NAME.MARKET_OVERVIEW}
             config={WIDGET_MARKET_OVERVIEW_CONFIG}
-            className="border-none body-m-regular"
+            className="border-none body-m-regular custom-chart"
           />
         </section>
         <section className="w-full md:w-2/3">
@@ -33,7 +33,7 @@ const HomePage: React.FC = () => {
           <TradingViewWidget
             widgetName={WIDGET_NAME.NEWS}
             config={WIDGET_NEWS_CONFIG}
-            className="border-none body-m-regular"
+            className="border-none body-m-regular tv-embed-widget-wrapper__body--custom"
           />
         </section>
         <section className="market-data w-full md:w-2/3">

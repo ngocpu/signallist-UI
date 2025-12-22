@@ -6,7 +6,7 @@ import React, { memo } from "react";
 interface TradingViewWidgetProps {
   title?: string;
   widgetName: string;
-  config: object;
+  config: Record<string, unknown>;
   height?: string | number;
   className?: string;
 }
