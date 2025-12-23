@@ -6,9 +6,13 @@ import HeaderLogo from "@assets/icons/logo.svg";
 
 const PublicLayout: React.FC = () => {
   return (
-    <div className="w-full h-screen overflow-hidden flex-center relative">
-      <div className="w-full md:w-1/2 lg:w-1/3 h-[80%] flex-center flex-col">
-        <img src={HeaderLogo} alt="logo" className=" mb-10 self-center md:mb-30 md:self-start md:pl-20" />
+    <div className="w-full h-screen overflow-hidden flex relative">
+      <div className="w-full  md:w-1/2 lg:w-1/3 h-full flex flex-col items-center md:justify-center">
+        <img
+          src={HeaderLogo}
+          alt="logo"
+          className=" mt-4 mb-6 self-center md:self-start md:pl-20"
+        />
         <Outlet />
       </div>
       <div className="hidden md:block md:w-1/2 lg:w-2/3 bg-public-bg h-screen">
@@ -23,8 +27,8 @@ const PublicLayout: React.FC = () => {
               <span className="body-m-regular">Retail Investor</span>
             </div>
             <div className="flex-center">
-              {Array.from({ length: 5 }).map((_, id) => (
-                <img key={id} src={StarIcon} alt="star" className="w-5 h-5" />
+              {[1, 2, 3, 4, 5].map((n) => (
+                <img key={n} src={StarIcon} alt="star" className="w-5 h-5" />
               ))}
             </div>
           </div>

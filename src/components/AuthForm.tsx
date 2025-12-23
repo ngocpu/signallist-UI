@@ -21,9 +21,15 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { ROUTER_PATH } from "@/constants/router";
+import {
+  COUNTRY_SELECT,
+  INVESTMENT_GOALS,
+  RISK_TOLERANCE,
+  INDUSTRY_SELECT,
+} from "@/constants/constants";
 
 const formSchema = z.object({
-  email: z.string().email({ message: "Invalid email address." }),
+  email: z.email({ message: "Invalid email address." }),
   password: z
     .string()
     .min(6, { message: "Password must be at least 6 characters long." }),
@@ -33,7 +39,7 @@ const registerSchema = formSchema.extend({
   fullName: z
     .string()
     .min(2, { message: "Full name must be at least 2 characters long." }),
-  email: z.string().email({ message: "Invalid email address." }),
+  email: z.email({ message: "Invalid email address." }),
   password: z
     .string()
     .min(6, { message: "Password must be at least 6 characters long." }),
@@ -73,12 +79,14 @@ const AuthForm: React.FC<{ type: AuthTypes }> = ({ type }) => {
     console.log(data);
   };
   return (
-    <div className="w-full md:w-[80%] px-6 flex flex-col gap-8">
-      <h1 className="text-2xl font-bold mb-6">{type === "login" ? "Log In Your Account" : "Sign Up & Personalize"}</h1>
+    <div className="w-full md:w-[80%] px-6 flex flex-col gap-4">
+      <h1 className="text-2xl font-bold">
+        {type === "login" ? "Log In Your Account" : "Sign Up & Personalize"}
+      </h1>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="w-full flex flex-col gap-4"
+          className="w-full flex flex-col gap-2.5"
         >
           {type === "register" && (
             <FormField
@@ -86,11 +94,13 @@ const AuthForm: React.FC<{ type: AuthTypes }> = ({ type }) => {
               name="fullName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Full Name</FormLabel>
+                  <FormLabel className="body-s-regular text-gray-300">
+                    Full Name
+                  </FormLabel>
                   <FormControl>
                     <Input placeholder="Full name" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="body-s-regular" />
                 </FormItem>
               )}
             />
@@ -101,11 +111,13 @@ const AuthForm: React.FC<{ type: AuthTypes }> = ({ type }) => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel className="body-s-regular text-gray-300">
+                  Email
+                </FormLabel>
                 <FormControl>
                   <Input placeholder="email" {...field} />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="body-s-regular" />
               </FormItem>
             )}
           />
@@ -115,11 +127,13 @@ const AuthForm: React.FC<{ type: AuthTypes }> = ({ type }) => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel className="body-s-regular text-gray-300">
+                  Password
+                </FormLabel>
                 <FormControl>
                   <Input type="password" placeholder="password" {...field} />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="body-s-regular" />
               </FormItem>
             )}
           />
@@ -131,7 +145,9 @@ const AuthForm: React.FC<{ type: AuthTypes }> = ({ type }) => {
                 name="country"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Country</FormLabel>
+                    <FormLabel className="body-s-regular text-gray-300">
+                      Country
+                    </FormLabel>
                     <FormControl>
                       <Select
                         onValueChange={field.onChange}
@@ -140,15 +156,22 @@ const AuthForm: React.FC<{ type: AuthTypes }> = ({ type }) => {
                         <SelectTrigger className="w-full">
                           <SelectValue placeholder="Select country" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent position="popper" side="bottom">
                           {/* placeholder shown via SelectValue; no empty-value items allowed */}
-                          <SelectItem value="AU">Australia</SelectItem>
-                          <SelectItem value="US">United States</SelectItem>
-                          <SelectItem value="VN">Vietnam</SelectItem>
+                          {COUNTRY_SELECT.map((c) => (
+                            <SelectItem key={c.value} value={c.value}>
+                              <img
+                                src={c.flag}
+                                alt={c.label}
+                                className="w-5 h-5 rounded-full object-cover mr-2"
+                              />
+                              <span>{c.label}</span>
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="body-s-regular" />
                   </FormItem>
                 )}
               />
@@ -158,7 +181,9 @@ const AuthForm: React.FC<{ type: AuthTypes }> = ({ type }) => {
                 name="investmentGoals"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Investment Goals</FormLabel>
+                    <FormLabel className="body-s-regular text-gray-300">
+                      Investment Goals
+                    </FormLabel>
                     <FormControl>
                       <Select
                         onValueChange={field.onChange}
@@ -167,17 +192,16 @@ const AuthForm: React.FC<{ type: AuthTypes }> = ({ type }) => {
                         <SelectTrigger className="w-full">
                           <SelectValue placeholder="Select goal" />
                         </SelectTrigger>
-                        <SelectContent>
-                          {/* placeholder shown via SelectValue; no empty-value items allowed */}
-                          <SelectItem value="growth">Growth</SelectItem>
-                          <SelectItem value="income">Income</SelectItem>
-                          <SelectItem value="conservative">
-                            Conservative
-                          </SelectItem>
+                        <SelectContent position="popper" side="bottom">
+                          {INVESTMENT_GOALS.map((g) => (
+                            <SelectItem key={g.value} value={g.value}>
+                              {g.label}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="body-s-regular" />
                   </FormItem>
                 )}
               />
@@ -187,7 +211,9 @@ const AuthForm: React.FC<{ type: AuthTypes }> = ({ type }) => {
                 name="riskTolerance"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Risk Tolerance</FormLabel>
+                    <FormLabel className="body-s-regular text-gray-300">
+                      Risk Tolerance
+                    </FormLabel>
                     <FormControl>
                       <Select
                         onValueChange={field.onChange}
@@ -196,15 +222,16 @@ const AuthForm: React.FC<{ type: AuthTypes }> = ({ type }) => {
                         <SelectTrigger className="w-full">
                           <SelectValue placeholder="Select risk level" />
                         </SelectTrigger>
-                        <SelectContent>
-                          {/* placeholder shown via SelectValue; no empty-value items allowed */}
-                          <SelectItem value="low">Low</SelectItem>
-                          <SelectItem value="medium">Medium</SelectItem>
-                          <SelectItem value="high">High</SelectItem>
+                        <SelectContent position="popper" side="bottom">
+                          {RISK_TOLERANCE.map((r) => (
+                            <SelectItem key={r.value} value={r.value}>
+                              {r.label}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="body-s-regular" />
                   </FormItem>
                 )}
               />
@@ -214,7 +241,9 @@ const AuthForm: React.FC<{ type: AuthTypes }> = ({ type }) => {
                 name="preferredIndustry"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Preferred Industry</FormLabel>
+                    <FormLabel className="body-s-regular text-gray-300">
+                      Preferred Industry
+                    </FormLabel>
                     <FormControl>
                       <Select
                         onValueChange={field.onChange}
@@ -223,33 +252,38 @@ const AuthForm: React.FC<{ type: AuthTypes }> = ({ type }) => {
                         <SelectTrigger className="w-full">
                           <SelectValue placeholder="Select your preferred industry" />
                         </SelectTrigger>
-                        <SelectContent>
-                          {/* placeholder shown via SelectValue; no empty-value items allowed */}
-                          <SelectItem value="tech">Technology</SelectItem>
-                          <SelectItem value="finance">Finance</SelectItem>
-                          <SelectItem value="health">Healthcare</SelectItem>
+                        <SelectContent position="popper" side="bottom">
+                          {INDUSTRY_SELECT.map((i) => (
+                            <SelectItem key={i.value} value={i.value}>
+                              {i.label}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="body-s-regular" />
                   </FormItem>
                 )}
               />
             </>
           )}
-          <Button type="submit" className="py-3 px-3.5 rounded-md bg-linear-to-r from-button-on-sufer-start to-button-on-sufer-end h-11 cursor-pointer hover:opacity-90">
+          <Button
+            type="submit"
+            className="py-3 px-3.5 font-bold rounded-md bg-linear-to-r from-button-on-sufer-start to-button-on-sufer-end h-11 cursor-pointer hover:opacity-90"
+          >
             {type === "login" ? "Login" : "Start Your Investing Journey"}
           </Button>
-          <p>
+          <p className="body-s-regular text-center text-gray-200">
             {type === "login"
-              ? "Don't have an account?"
-              : "Already have an account?"}
+              ? "Don't have an account? "
+              : "Already have an account? "}
             <Link
               to={
                 type === "login"
                   ? `${ROUTER_PATH.AUTH}/${ROUTER_PATH.AUTH_REGISTER}`
                   : `${ROUTER_PATH.AUTH}/${ROUTER_PATH.AUTH_LOGIN}`
               }
+              className="font-semibold text-white"
             >
               {type === "login" ? "Register" : "Login"}
             </Link>

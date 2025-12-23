@@ -7,7 +7,7 @@
   scrollbar-color: var(--color-ring) var(--color-background);
 }
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Trebuchet MS", Roboto, Ubuntu, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   --radius: 0.625rem;
@@ -94,17 +94,17 @@ body {
 .dark {
   --background: #050505;
   --foreground: oklch(0.985 0.002 247.839);
-  --card: oklch(0.21 0.034 264.665);
+  --card: #141414;
   --card-foreground: oklch(0.985 0.002 247.839);
-  --popover: oklch(0.21 0.034 264.665);
+  --popover: #141414;
   --popover-foreground: oklch(0.985 0.002 247.839);
   --primary: oklch(0.928 0.006 264.531);
-  --primary-foreground: oklch(0.21 0.034 264.665);
-  --secondary: oklch(0.278 0.033 256.848);
+  --primary-foreground: oklch(23.544% 0.00192 286.051);
+  --secondary: oklch(1 0 0 / 15%);
   --secondary-foreground: oklch(0.985 0.002 247.839);
   --muted: oklch(0.278 0.033 256.848);
   --muted-foreground: oklch(0.707 0.022 261.325);
-  --accent: oklch(0.278 0.033 256.848);
+  --accent: oklch(50.301% 0.00344 264.646);
   --accent-foreground: oklch(0.985 0.002 247.839);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
@@ -150,6 +150,9 @@ body {
   }
   .body-m-regular {
     @apply text-[14px] font-normal;
+  }
+  .body-s-regular {
+    @apply text-[12px] font-normal;
   }
   /* custom button styles */
   .custom-btn {
