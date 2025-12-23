@@ -10,8 +10,8 @@ const WatchListPage = lazy(() => import('@pages/WatchList'));
 const StockDetailPage = lazy(() => import('@pages/StockDetail'));
 const LoginPage = lazy(() => import('@pages/auth/Login'));
 const RegisterPage = lazy(() => import('@pages/auth/Register'));
-const PublicLayout = lazy(() => import('@components/PublicLayout'));
-const PrivateLayout = lazy(() => import('@components/PrivateLayout'));
+const PublicLayout = lazy(() => import('@/layouts/PublicLayout'));
+const PrivateLayout = lazy(() => import('@/layouts/PrivateLayout'));
 
 export interface RouteConfig {
   path: string;

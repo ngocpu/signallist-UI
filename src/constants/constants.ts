@@ -1,4 +1,7 @@
 import { ROUTER_PATH } from "@/constants/router";
+import auFlag from "@/assets/flags/au.svg";
+import usFlag from "@/assets/flags/us.svg";
+import vnFlag from "@/assets/flags/vn.svg";
 
 export const SIGNAL_NAVIGATION_LIST = [
     {
@@ -22,4 +25,28 @@ export const SIGNAL_NAVIGATION_LIST = [
         path: ROUTER_PATH.NEWS,
     }
 ]
+
+export const COUNTRY_SELECT = [
+    { value: "AU", label: "Australia", flag: auFlag },
+    { value: "US", label: "United States", flag: usFlag },
+    { value: "VN", label: "Vietnam", flag: vnFlag },
+];
+
+export const INVESTMENT_GOALS = [
+    { value: "growth", label: "Growth" },
+    { value: "income", label: "Income" },
+    { value: "conservative", label: "Conservative" },
+];
+
+export const RISK_TOLERANCE = [
+    { value: "low", label: "Low" },
+    { value: "medium", label: "Medium" },
+    { value: "high", label: "High" },
+];
+
+export const INDUSTRY_SELECT = [
+    { value: "tech", label: "Technology" },
+    { value: "finance", label: "Finance" },
+    { value: "health", label: "Healthcare" },
+];
 

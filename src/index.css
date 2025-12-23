@@ -7,21 +7,12 @@
   scrollbar-color: var(--color-ring) var(--color-background);
 }
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Trebuchet MS", Roboto, Ubuntu, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.13 0.028 261.692);
+  --foreground: #050505;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.13 0.028 261.692);
   --popover: oklch(1 0 0);
@@ -101,19 +92,19 @@ body {
 }
 
 .dark {
-  --background: oklch(0.13 0.028 261.692);
+  --background: #050505;
   --foreground: oklch(0.985 0.002 247.839);
-  --card: oklch(0.21 0.034 264.665);
+  --card: #141414;
   --card-foreground: oklch(0.985 0.002 247.839);
-  --popover: oklch(0.21 0.034 264.665);
+  --popover: #141414;
   --popover-foreground: oklch(0.985 0.002 247.839);
   --primary: oklch(0.928 0.006 264.531);
-  --primary-foreground: oklch(0.21 0.034 264.665);
-  --secondary: oklch(0.278 0.033 256.848);
+  --primary-foreground: oklch(23.544% 0.00192 286.051);
+  --secondary: oklch(1 0 0 / 15%);
   --secondary-foreground: oklch(0.985 0.002 247.839);
   --muted: oklch(0.278 0.033 256.848);
   --muted-foreground: oklch(0.707 0.022 261.325);
-  --accent: oklch(0.278 0.033 256.848);
+  --accent: oklch(50.301% 0.00344 264.646);
   --accent-foreground: oklch(0.985 0.002 247.839);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
@@ -138,6 +129,7 @@ body {
   --color-button-on-sufer-start: #fdd458;
   --color-button-on-sufer-end: #e8ba40;
   --color-navbar: #141414;
+  --color-public-bg: #141414;
 }
 
 @layer base {
@@ -159,8 +151,78 @@ body {
   .body-m-regular {
     @apply text-[14px] font-normal;
   }
+  .body-s-regular {
+    @apply text-[12px] font-normal;
+  }
   /* custom button styles */
   .custom-btn {
     @apply h-[44px] px-3.5 py-3 min-w-[440px] rounded-[4px] cursor-pointer;
   }
+}
+/* Widget styles */
+.tradingview-widget-container {
+  position: relative;
+  background-color: #141414 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.tv-embed-widget-wrapper__body {
+  background-color: #141414 !important;
+}
+
+.tradingview-widget-container__widget {
+  background-color: #141414 !important;
+  height: 100% !important;
+
+}
+
+.widget-stock-heatmap-container .screenerMapWrapper-BBVfGP0b {
+  overflow: hidden !important;
+  background: #141414 !important;
+  background-color: #141414 !important;
+}
+
+.canvasContainer-tyaAU8aH {
+  background: #141414 !important;
+  background-color: #141414 !important;
+}
+
+.tv-site-widget--bg_none {
+  background-color: transparent !important;
+}
+
+.tradingview-widget-copyright {
+  font-size: 11px;
+  color: #9ca3af;
+  text-align: center;
+  padding: 4px 0;
+  background-color: transparent;
+}
+
+.tradingview-widget-copyright a {
+  color: #60a5fa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.tradingview-widget-copyright a:hover {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+.tv-embed-widget-wrapper .tv-embed-widget-wrapper__body {
+  background: #141414 !important;
+  background-color: #141414 !important;
+}
+
+.tradingview-widget-container iframe {
+  background-color: #141414 !important;
+  width: 100% !important;
+}
+
+.custom-chart.tradingview-widget-container iframe {
+  border: 1px solid #30333A;
+  border-radius: 8px !important;
+  overflow: hidden !important;
 }
