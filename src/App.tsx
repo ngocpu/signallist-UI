@@ -1,9 +1,18 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import routes from '@/routes/routerConfig'
+import CompanyProfileWidget from './components/CompanyProfileWidget'
 
 export default function App(): React.ReactNode {
+  useEffect(() => {
+      const handleMessage = (event: MessageEvent) => {
+        console.log("INCOMMING", event)
+      };
+  
+      window.addEventListener("message", handleMessage);
+      return () => window.removeEventListener("message", handleMessage);
+    }, []);
   const renderRoutes = (routeConfigs: any[] | undefined): React.ReactNode => {
     if (!Array.isArray(routeConfigs)) return null
     return routeConfigs.map((route, idx) => {
@@ -28,9 +37,10 @@ export default function App(): React.ReactNode {
 
   return (
     <div className="app-container w-full h-screen">
-      <Suspense fallback={<div>Loading...</div>}>
+      {/* <Suspense fallback={<div>Loading...</div>}>
         <Routes>{renderRoutes(Array.isArray(routes) ? routes : [])}</Routes>
-      </Suspense>
+      </Suspense> */}
+      <CompanyProfileWidget />
     </div>
   )
 }

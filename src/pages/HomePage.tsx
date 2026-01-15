@@ -1,3 +1,4 @@
+import CompanyProfileWidget from "@/components/CompanyProfileWidget";
 import TradingViewWidget from "@/components/TradingViewWidget";
 import {
   WIDGET_HEAT_MAP_CONFIG,
@@ -10,8 +11,8 @@ import React from "react";
 
 const HomePage: React.FC = () => {
   return (
-    <div className="w-full h-full">
-      <div className="flex-col md:flex-row flex gap-6 w-full">
+    <div className="w-full">
+      {/* <div className="flex-col md:flex-row flex gap-6 w-full">
         <section className="w-full md:w-1/3">
           <TradingViewWidget
             widgetName={WIDGET_NAME.MARKET_OVERVIEW}
@@ -43,7 +44,10 @@ const HomePage: React.FC = () => {
             className="border-none body-m-regular"
           />
         </section>
-      </div>
+      </div> */}
+      {/* <section>
+        <CompanyProfileWidget />
+      </section> */}
     </div>
   );
 };
